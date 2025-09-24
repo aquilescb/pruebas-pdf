@@ -1,0 +1,60 @@
+/* A4 + márgenes 2.5 cm */
+@page {
+   size: A4;
+   margin: 25mm;
+}
+
+/* Fallback libre (Carlito) hosteado por vos */
+@font-face {
+   font-family: "Carlito";
+   src: url("/public/fonts/Carlito-Regular.ttf") format("truetype");
+   font-weight: 400;
+   font-style: normal;
+   font-display: swap;
+}
+@font-face {
+   font-family: "Carlito";
+   src: url("/public/fonts/Carlito-Bold.ttf") format("truetype");
+   font-weight: 700;
+   font-style: normal;
+   font-display: swap;
+}
+
+/* Calibri primero: si el server la tiene, Puppeteer la usa e incrusta en el PDF */
+body {
+   font-family: Calibri, "Carlito", sans-serif;
+   font-size: 11pt;
+   line-height: 1.4;
+   -webkit-print-color-adjust: exact;
+   print-color-adjust: exact;
+}
+
+h1 {
+   font-size: 14pt;
+   font-weight: 700;
+   margin: 0 0 10pt 0;
+}
+
+p {
+   margin: 0 0 8pt 0;
+   text-align: justify;
+}
+
+footer {
+   position: fixed;
+   bottom: 10mm;
+   left: 25mm;
+   right: 25mm;
+   font-size: 9pt;
+   text-align: center;
+}
+
+/* si querés encabezado solo en la primera página */
+.only-first {
+   display: block;
+}
+@media print {
+   .only-first {
+      page-break-after: avoid;
+   }
+}
